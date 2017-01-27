@@ -4,8 +4,10 @@
 #=========================================================
 echo "Install the packages..."
 #=========================================================
+sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update
-sudo apt-get -y install fluxbox xorg unzip vim default-jre rungetty firefox
+sudo apt-get -y install fluxbox xorg unzip vim openjdk-8-jre rungetty firefox
+sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 
 #=========================================================
 echo "Set autologin for the Vagrant user..."
@@ -87,16 +89,6 @@ echo -n "Add host alias..."
 #=========================================================
 echo "192.168.33.1 host" >> /etc/hosts
 echo "ok"
-
-#=========================================================
-echo "Download and setup Java 8..."
-#=========================================================
-
-sudo add-apt-repository ppa:webupd8team/java -y
-sudo apt-get update -y
-sudo apt-get install oracle-java8-installer -y
-sudo apt-get install oracle-java8-set-default -y
-
 
 #=========================================================
 echo "Reboot the VM"
